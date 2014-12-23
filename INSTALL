@@ -1,0 +1,9 @@
+
+To build and install the game, get the Simple DirectMedia Layer
+library from http://www.devolution.com/~slouken/SDL/ and install
+it.  Then run:
+	./configure; make; make install
+
+If you are building with Visual C++, unpack VisualC.zip and open
+the VC++ project file found in the new "VisualC" directory.
+
