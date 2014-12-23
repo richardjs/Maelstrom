@@ -13,18 +13,20 @@ extern void	ShowDawn(void);
 
 /* Generic key control definitions */
 #define THRUST_KEY	0x01
-#define RIGHT_KEY	0x02
-#define LEFT_KEY	0x03
-#define SHIELD_KEY	0x04
-#define FIRE_KEY	0x05
-#define PAUSE_KEY	0x06
-#define ABORT_KEY	0x07
+#define BRAKE_KEY	0x02
+#define RIGHT_KEY	0x03
+#define LEFT_KEY	0x04
+#define SHIELD_KEY	0x05
+#define FIRE_KEY	0x06
+#define PAUSE_KEY	0x07
+#define ABORT_KEY	0x08
 
 /* The controls structure */
 typedef struct {
 	SDLKey gPauseControl;
 	SDLKey gShieldControl;
 	SDLKey gThrustControl;
+	SDLKey gBrakeControl;
 	SDLKey gTurnRControl;
 	SDLKey gTurnLControl;
 	SDLKey gFireControl;

@@ -16,10 +16,10 @@
 /* Pause        Shield     Thrust  TurnR      TurnL     Fire     Quit  */
 #ifdef FAITHFUL_SPECS
 Controls controls =
-{ SDLK_CAPSLOCK,SDLK_SPACE,SDLK_UP,SDLK_RIGHT,SDLK_LEFT,SDLK_TAB,SDLK_ESCAPE };
+{ SDLK_CAPSLOCK,SDLK_SPACE,SDLK_UP,SDLK_DOWN,SDLK_RIGHT,SDLK_LEFT,SDLK_TAB,SDLK_ESCAPE };
 #else
 Controls controls =
-   { SDLK_PAUSE,SDLK_SPACE,SDLK_UP,SDLK_RIGHT,SDLK_LEFT,SDLK_TAB,SDLK_ESCAPE };
+   { SDLK_PAUSE,SDLK_SPACE,SDLK_UP,SDLK_DOWN,SDLK_RIGHT,SDLK_LEFT,SDLK_TAB,SDLK_ESCAPE };
 #endif
 
 #ifdef MOVIE_SUPPORT
@@ -139,12 +139,13 @@ void SaveControls(void)
 
 #define FIRE_CTL	0
 #define THRUST_CTL	1
-#define SHIELD_CTL	2
-#define TURNR_CTL	3
-#define TURNL_CTL	4
-#define PAUSE_CTL	5
-#define QUIT_CTL	6
-#define NUM_CTLS	7
+#define BRAKE_CTL	2
+#define SHIELD_CTL	3
+#define TURNR_CTL	4
+#define TURNL_CTL	5
+#define PAUSE_CTL	6
+#define QUIT_CTL	7
+#define NUM_CTLS	8
 
 #define SP		3
 
@@ -159,12 +160,13 @@ static struct {
 } checkboxes[] = {
 	{ "Fire",	0*BOX_HEIGHT+0*SP, &newcontrols.gFireControl },
 	{ "Thrust",	1*BOX_HEIGHT+1*SP, &newcontrols.gThrustControl },
-	{ "Shield",	2*BOX_HEIGHT+2*SP, &newcontrols.gShieldControl },
-	{ "Turn Clockwise", 3*BOX_HEIGHT+3*SP, &newcontrols.gTurnRControl },
+	{ "Brake (once obtained)",	2*BOX_HEIGHT+2*SP, &newcontrols.gBrakeControl },
+	{ "Shield",	3*BOX_HEIGHT+3*SP, &newcontrols.gShieldControl },
+	{ "Turn Clockwise", 4*BOX_HEIGHT+4*SP, &newcontrols.gTurnRControl },
 	{ "Turn Counter-Clockwise",
-			4*BOX_HEIGHT+4*SP, &newcontrols.gTurnLControl },
-	{ "Pause",	5*BOX_HEIGHT+5*SP, &newcontrols.gPauseControl },
-	{ "Abort Game",	6*BOX_HEIGHT+6*SP, &newcontrols.gQuitControl },
+			5*BOX_HEIGHT+5*SP, &newcontrols.gTurnLControl },
+	{ "Pause",	6*BOX_HEIGHT+6*SP, &newcontrols.gPauseControl },
+	{ "Abort Game",	7*BOX_HEIGHT+7*SP, &newcontrols.gQuitControl },
 };
 
 static int X=0;
@@ -412,6 +414,8 @@ static void HandleEvent(SDL_Event *event)
 					SetControl(SHIELD_KEY, 1);
 				else if ( key == controls.gThrustControl )
 					SetControl(THRUST_KEY, 1);
+				else if ( key == controls.gBrakeControl )
+					SetControl(BRAKE_KEY, 1);
 				else if ( key == controls.gPauseControl )
 					SetControl(PAUSE_KEY, 1);
 				else if ( key == controls.gQuitControl )
@@ -449,6 +453,8 @@ mesg("Movie is %s...\n", gMovie ? "started" : "stopped");
 					SetControl(SHIELD_KEY, 0);
 				else if ( key == controls.gThrustControl )
 					SetControl(THRUST_KEY, 0);
+				else if ( key == controls.gBrakeControl )
+					SetControl(BRAKE_KEY, 0);
 			}
 			break;
 

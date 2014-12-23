@@ -89,6 +89,7 @@ Player::NewWave(void)
 	Thrusting = 0;
 	NoThrust = 0;
 	ThrustBlit = gThrust1;
+	Breaking = 0;
 	Shooting = 0;
 	WasShooting = 0;
 	Rotating = 0;
@@ -116,6 +117,7 @@ Player::NewShip(void)
 	Thrusting = 0;
 	WasThrusting = 0;
 	ThrustBlit = gThrust1;
+	Breaking = 0;
 	Shooting = 0;
 	WasShooting = 0;
 	Rotating = 0;
@@ -270,6 +272,7 @@ Player::Explode(void)
 	/* Finish our explosion */
 	Exploding = 1;
 	Thrusting = 0;
+	Breaking = 0;
 	Shooting = 0;
 	ShieldOn = 0;
 	solid = 0;
@@ -371,7 +374,7 @@ printf("\n");
 	/* Update our status... :-) */
 	if ( Alive() && ! Exploding ) {
 		/* Airbrakes slow us down. :) */
-		if ( special & AIR_BRAKES ) {
+		if ( Breaking && (special & AIR_BRAKES) ) {
 			if ( yvec > 0 )
 				--yvec;
 			else if ( yvec < 0 )
@@ -479,6 +482,9 @@ Player::HandleKeys(void)
 					case THRUST_KEY:
 						Thrusting = 1;
 						break;
+					case BRAKE_KEY:
+						Breaking = 1;
+						break;
 					case RIGHT_KEY:
 						Rotating |= 0x01;
 						break;
@@ -513,6 +519,9 @@ Player::HandleKeys(void)
 						Thrusting = 0;
 						if ( sound->Playing(gThrusterSound) )
 							sound->HaltSound(3);
+						break;
+					case BRAKE_KEY:
+						Breaking = 0;
 						break;
 					case RIGHT_KEY:
 						Rotating &= ~0x01;
