@@ -374,16 +374,26 @@ printf("\n");
 	/* Update our status... :-) */
 	if ( Alive() && ! Exploding ) {
 		/* Airbrakes slow us down. :) */
-		if ( Breaking && (special & AIR_BRAKES) ) {
-			if ( yvec > 0 )
-				--yvec;
-			else if ( yvec < 0 )
-				++yvec;
+		if ( Breaking && (special & AIR_BRAKES || 1) ) {
+			if ( yvec >= AIR_BRAKES_POWER ) {
+				yvec -= AIR_BRAKES_POWER;
+			}
+			else if ( yvec <= -AIR_BRAKES_POWER ){
+				yvec += AIR_BRAKES_POWER;
+			}
+			else {
+				yvec = 0;
+			}
 
-			if ( xvec > 0 )
-				--xvec;
-			else if ( xvec < 0 )
-				++xvec;
+			if ( xvec >= AIR_BRAKES_POWER ) {
+				xvec -= AIR_BRAKES_POWER;
+			}
+			else if ( xvec <= -AIR_BRAKES_POWER ) {
+				xvec += AIR_BRAKES_POWER;
+			}
+			else {
+				xvec = 0;
+			}
 		}
 
 		/* Thrust speeds us up! :)  */

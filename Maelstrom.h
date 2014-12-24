@@ -62,6 +62,8 @@
 #define	NUM_PRIZES		8
 #define	LUCK_ODDS		3
 
+#define AIR_BRAKES_POWER	5
+
 /* ----------------------------------------------------------------- */
 /* -- Structures and typedefs */
 
