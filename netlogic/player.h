@@ -130,7 +130,7 @@ private:
 	int NoThrust;
 	Blit *ThrustBlit;
 	int WasThrusting;
-	int Breaking;
+	int Braking;
 	int Shooting;
 	int WasShooting;
 	int Rotating;
