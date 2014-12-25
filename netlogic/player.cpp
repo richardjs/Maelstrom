@@ -374,7 +374,7 @@ printf("\n");
 	/* Update our status... :-) */
 	if ( Alive() && ! Exploding ) {
 		/* Airbrakes slow us down. :) */
-		if ( Braking && (special & AIR_BRAKES || 1) ) {
+		if ( Braking && (special & AIR_BRAKES) ) {
 			if ( yvec >= AIR_BRAKES_POWER ) {
 				yvec -= AIR_BRAKES_POWER;
 			}
