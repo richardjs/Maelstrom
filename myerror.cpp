@@ -16,7 +16,7 @@ void error(char *fmt, ...)
 	va_list ap;
 
 	va_start(ap, fmt);
-	vsprintf(mesg, fmt, ap);
+	vsnprintf(mesg, sizeof(mesg), fmt, ap);
 	fputs(mesg, stderr);
 	va_end(ap);
 }
@@ -27,7 +27,7 @@ void mesg(char *fmt, ...)
 	va_list ap;
 
 	va_start(ap, fmt);
-	vsprintf(mesg, fmt, ap);
+	vsnprintf(mesg, sizeof(mesg), fmt, ap);
 	fputs(mesg, stdout);
 	va_end(ap);
 }
@@ -37,8 +37,8 @@ void myperror(char *msg)
 	char buffer[BUFSIZ];
 
 	if ( *msg ) {
-		sprintf(buffer, "%s: %s\n", msg, strerror(errno));
-		error(buffer);
+		snprintf(buffer, sizeof(buffer), "%s: %s\n", msg, strerror(errno));
+		error("%s", buffer);
 	} else
 		error((char *)strerror(errno));
 }

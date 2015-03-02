@@ -628,7 +628,7 @@ FrameBuf:: ScreenDump(char *prefix, Uint16 x, Uint16 y, Uint16 w, Uint16 h)
 
 		found = 0;
 		for ( which=0; !found; ++which ) {
-			sprintf(file, "%s%d.bmp", prefix, which);
+			snprintf(file, sizeof(file), "%s%d.bmp", prefix, which);
 			if ( ((fp=fopen(file, "r")) == NULL) &&
 			     ((fp=fopen(file, "w")) != NULL) ) {
 				found = 1;
@@ -847,10 +847,8 @@ FrameBuf:: AddDirtyRect(SDL_Rect *rect)
 			/* Update the dirty rectangle map with the new list */
 			for ( i=0; i<dirtymaplen; ++i ) {
 				if ( dirtymap[i] != NULL ) {
-					dirtymap[i] = (SDL_Rect *)(
-					(dirtymap[i]-updatelist) +
-								newlist
-					);
+					dirtymap[i] = newlist
+					 (dirtymap[i]-updatelist);
 				}
 			}
 			delete[] updatelist;

@@ -59,7 +59,7 @@ void RegisterHighScore(Scores high)
 
 	/* Send the scores */
 	crc = get_checksum(key, KEY_LEN);
-	sprintf(netbuf, SCOREFMT, crc, high.name, high.score, high.wave);
+	snprintf(netbuf, sizeof(netbuf), SCOREFMT, crc, high.name, high.score, high.wave);
 	SDLNet_TCP_Send(remote, netbuf, strlen(netbuf));
 	n = SDLNet_TCP_Recv(remote, netbuf, 1024);
 	if ( n > 0 ) {
