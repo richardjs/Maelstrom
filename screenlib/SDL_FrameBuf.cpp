@@ -847,7 +847,7 @@ FrameBuf:: AddDirtyRect(SDL_Rect *rect)
 			/* Update the dirty rectangle map with the new list */
 			for ( i=0; i<dirtymaplen; ++i ) {
 				if ( dirtymap[i] != NULL ) {
-					dirtymap[i] = newlist
+					dirtymap[i] = newlist +
 					 (dirtymap[i]-updatelist);
 				}
 			}
