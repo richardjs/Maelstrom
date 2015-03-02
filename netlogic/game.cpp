@@ -852,7 +852,7 @@ static void DoGameOver(void)
 
 		hScores[which].wave = gWave;
 		hScores[which].score = OurShip->GetScore();
-		strcpy(hScores[which].name, handle);
+		strncpy(hScores[which].name, handle,sizeof(hScores[which].name)-1)[sizeof(hScores[which].name)-1] = 0;
 
 		sound->HaltSound();
 		sound->PlaySound(gGotPrize, 6);

@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 				ids[j], res->ResourceName(types[i], ids[j]));
 			if ( argv[2] ) {
 				char path[23];
-				sprintf(path,"%s/%s:%hu", argv[2],
+				snprintf(path, sizeof(path),"%s/%s:%hu", argv[2],
 							types[i], ids[j]);
 				FILE *output;
 				Mac_ResData *D;
