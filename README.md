@@ -1,20 +1,19 @@
 # Maelstrom
 
-Maelstrom was originally a classic Mac OS game, first released as shareware in
-1992 by Andrew Welch of Ambrosia Software. Ambrosia gave the source to Sam
-Lantinga, who released Maelstrom 3.0, a SDL port under the GPL, in 1995. The
-game assets were released under the CC Attribution license in 2010.
+Maelstrom was originally a Mac OS game, first released as shareware in 1992
+by Andrew Welch of Ambrosia Software. Ambrosia gave the source to Sam Lantinga,
+who released Maelstrom 3.0, a SDL port under the GPL, in 1995. The game assets
+were released under the CC Attribution license in 2010.
 
-The latest version of the unmodified SDL port is available at
-http://www.libsdl.org/projects/Maelstrom/.
-
-*This repo is a fork off of the SDL port. There are two primary changes:*
+This repo is a fork of the SDL port. There are two primary changes:
 
 1.	The code has been updated to compile on modern machines.
-
 2.	The retro-thrusters powerup has been modified. Instead of being
 	constantly active, and thus constantly slowing your ship, they are
 	bound to a key, and only activate when that key is pressed.
+	
+The latest version of the unmodified SDL port is available at
+http://www.libsdl.org/projects/Maelstrom/.
 
 
 ### Original Maelstrom 3.0 README
